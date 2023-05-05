@@ -10,7 +10,8 @@ public class ResponseRegisterUserBodyLombokModel {
     "token": "QpwL5tke4Pnpja7X4"
 }
      */
-    String id,token;
+    String token;
+    private Integer id;
 
 
 }

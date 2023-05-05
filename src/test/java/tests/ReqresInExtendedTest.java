@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 

@@ -12,7 +12,7 @@ public class ResponseCreateUserBodyLombokModel {
     "createdAt": "2023-04-29T18:31:50.346Z"
 }
      */
-    String name, job,id,createdAt;
+    String name, job, id, createdAt;
 
 
 }

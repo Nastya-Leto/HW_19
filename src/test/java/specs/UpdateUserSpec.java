@@ -3,7 +3,7 @@ package specs;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.hamcrest.Matchers;
+
 
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
@@ -26,9 +26,9 @@ public class UpdateUserSpec {
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(200)
-            .expectBody("name",notNullValue())
+            .expectBody("name", notNullValue())
             .expectBody("job", notNullValue())
-           // .expectBody("job", Matchers.equalTo("zion resident"))
+            // .expectBody("job", Matchers.equalTo("zion resident"))
             .build();
 }
 

@@ -13,14 +13,14 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 
 public class WithGivenTotalSpec {
-    public static RequestSpecification WithGivenTotalRequestSpec = with()
+    public static RequestSpecification withGivenTotalRequestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .baseUri("https://reqres.in")
             .basePath("api/users?page=2")
             .contentType(JSON);
 
-    public static ResponseSpecification WithGivenTotalResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification withGivenTotalResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(200)

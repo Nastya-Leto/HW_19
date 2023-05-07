@@ -14,14 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static specs.CreateUserSpec.createUserRequestSpec;
 import static specs.CreateUserSpec.createUserResponseSpec;
-import static specs.DeleteUserSpec.DeleteUserRequestSpec;
-import static specs.DeleteUserSpec.DeleteUserResponseSpec;
-import static specs.RegisterUserSpec.RegisterUserRequestSpec;
-import static specs.RegisterUserSpec.RegisterUserResponseSpec;
-import static specs.UpdateUserSpec.UpdateUserRequestSpec;
-import static specs.UpdateUserSpec.UpdateUserResponseSpec;
-import static specs.WithGivenTotalSpec.WithGivenTotalRequestSpec;
-import static specs.WithGivenTotalSpec.WithGivenTotalResponseSpec;
+import static specs.DeleteUserSpec.*;
+import static specs.RegisterUserSpec.*;
+import static specs.UpdateUserSpec.*;
+import static specs.WithGivenTotalSpec.*;
 
 
 public class ReqresInExtendedLombokTest extends TestBase {
@@ -31,14 +27,14 @@ public class ReqresInExtendedLombokTest extends TestBase {
     void checkCreateNewUser() {
 
         step("Prepare testdata");
-        RequestCreateUserBodyLombokModel BodyCreate = new RequestCreateUserBodyLombokModel();
-        BodyCreate.setName("morpheus");
-        BodyCreate.setJob("leader");
+        RequestCreateUserBodyLombokModel bodyCreate = new RequestCreateUserBodyLombokModel();
+        bodyCreate.setName("morpheus");
+        bodyCreate.setJob("leader");
 
 
         ResponseCreateUserBodyLombokModel response = step("Make request", () ->
                 given(createUserRequestSpec)
-                        .body(BodyCreate)
+                        .body(bodyCreate)
                         .when()
                         .post()
                         .then()
@@ -54,17 +50,17 @@ public class ReqresInExtendedLombokTest extends TestBase {
     void checkUpdateUser() {
 
         step("Prepare testdata");
-        RequestUpdateUserBodyLombokModel BodyUpdate = new RequestUpdateUserBodyLombokModel();
-        BodyUpdate.setName("morpheus");
-        BodyUpdate.setJob("zion resident");
+        RequestUpdateUserBodyLombokModel bodyUpdate = new RequestUpdateUserBodyLombokModel();
+        bodyUpdate.setName("morpheus");
+        bodyUpdate.setJob("zion resident");
 
         ResponseUpdateUserBodyLombokModel response = step("Make request", () ->
-                given(UpdateUserRequestSpec)
-                        .body(BodyUpdate)
+                given(updateUserRequestSpec)
+                        .body(bodyUpdate)
                         .when()
                         .put()
                         .then()
-                        .spec(UpdateUserResponseSpec)
+                        .spec(updateUserResponseSpec)
                         .extract().as(ResponseUpdateUserBodyLombokModel.class));
 
         step("Verify response", () -> {
@@ -79,17 +75,17 @@ public class ReqresInExtendedLombokTest extends TestBase {
     void checkRegisterUser() {
 
         step("Prepare testdata");
-        RequestRegisterUserBodyLombokModel BodyRegisterUser = new RequestRegisterUserBodyLombokModel();
-        BodyRegisterUser.setEmail("eve.holt@reqres.in");
-        BodyRegisterUser.setPassword("pistol");
+        RequestRegisterUserBodyLombokModel bodyRegisterUser = new RequestRegisterUserBodyLombokModel();
+        bodyRegisterUser.setEmail("eve.holt@reqres.in");
+        bodyRegisterUser.setPassword("pistol");
 
         ResponseRegisterUserBodyLombokModel response = step("Make request", () ->
-                given(RegisterUserRequestSpec)
-                        .body(BodyRegisterUser)
+                given(registerUserRequestSpec)
+                        .body(bodyRegisterUser)
                         .when()
                         .post()
                         .then()
-                        .spec(RegisterUserResponseSpec)
+                        .spec(registerUserResponseSpec)
                         .extract().as(ResponseRegisterUserBodyLombokModel.class));
 
         step("Verify response", () ->
@@ -100,12 +96,12 @@ public class ReqresInExtendedLombokTest extends TestBase {
     void checkDeleteUser() {
 
 
-        step("Make request", () -> given(DeleteUserRequestSpec)
+        step("Make request", () -> given(deleteUserRequestSpec)
                 .log().uri()
                 .when()
                 .delete()
                 .then()
-                .spec(DeleteUserResponseSpec));
+                .spec(deleteUserResponseSpec));
 
     }
 
@@ -113,11 +109,11 @@ public class ReqresInExtendedLombokTest extends TestBase {
     void checkWithGivenTotal() {
 
         ResponseWithGivenTotalModel response = step("Make request", () ->
-                given(WithGivenTotalRequestSpec)
+                given(withGivenTotalRequestSpec)
                         .when()
                         .get()
                         .then()
-                        .spec(WithGivenTotalResponseSpec)
+                        .spec(withGivenTotalResponseSpec)
                         .extract().as(ResponseWithGivenTotalModel.class));
 
         step("Verify emails, avatars and number of users", () -> assertAll(

@@ -12,7 +12,7 @@ import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class RegisterUserSpec {
-    public static RequestSpecification RegisterUserRequestSpec = with()
+    public static RequestSpecification registerUserRequestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
@@ -21,7 +21,7 @@ public class RegisterUserSpec {
             .contentType(JSON);
 
 
-    public static ResponseSpecification RegisterUserResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification registerUserResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(200)

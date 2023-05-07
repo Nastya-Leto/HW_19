@@ -12,7 +12,7 @@ import static io.restassured.http.ContentType.JSON;
 
 
 public class DeleteUserSpec {
-    public static RequestSpecification DeleteUserRequestSpec = with()
+    public static RequestSpecification deleteUserRequestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
@@ -21,7 +21,7 @@ public class DeleteUserSpec {
             .contentType(JSON);
 
 
-    public static ResponseSpecification DeleteUserResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification deleteUserResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(204)
